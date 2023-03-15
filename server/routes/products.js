@@ -1,11 +1,12 @@
 import express from "express";
 
-import { getProducts } from '../controllers/products.js'
+import { getAllProduct } from '../controllers/products.js'
 
 const router = express.Router();
 
 // http://localhost:5000/products
 
-router.get('/', getProducts);
+// router.get('/', getAllProduct); for a single http method less efficient for bigger projects.
+router.route('/').get(getAllProduct);
 
 export default router;
