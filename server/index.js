@@ -2,7 +2,7 @@ import express from 'express';
 import * as dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import productRoutes from './routes/products.js';
+import productRoutes from './routes/product.routes.js';
 import connectDB from './mongodb/connect.js';
 
 dotenv.config();
@@ -10,7 +10,8 @@ dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: "30mb" }));
-app.use('/products', productRoutes);
+
+app.use('/api/v1/products', productRoutes);
 
 app.get('/', (req, res) => {
     res.send({ message: 'Hello World!' });
