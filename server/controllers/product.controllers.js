@@ -12,7 +12,7 @@ cloudinary.config({
 });
 
 
-export const getAllProduct = async (req, res) => {
+export const getAllProducts = async (req, res) => {
     try {
         const productModel = await ProductModel.find();
 
