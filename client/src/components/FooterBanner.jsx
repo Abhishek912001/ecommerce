@@ -22,7 +22,7 @@ const FooterBanner = () => {
         </div>
 
         <img
-          src="https://res.cloudinary.com/dhzgt0b7q/image/upload/v1679087947/mernEcommerce/a64b345016e96adfb8849af5521c8e0ecfe8f027-555x555_o1sghf.webp"
+          src="https://res.cloudinary.com/nolyfe/image/upload/v1679727306/mernEcommerce/a64b345016e96adfb8849af5521c8e0ecfe8f027-555x555_svcl92.webp"
           className="footer-banner-image"
           alt="footerbanner"
         />

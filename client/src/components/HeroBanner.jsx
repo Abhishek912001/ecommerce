@@ -8,7 +8,7 @@ const HeroBanner = () => {
         <div>
           <p className="beats-solo">SMALL TEXT</p>
           <h3>MID TEXT</h3>
-          <img src="https://res.cloudinary.com/dhzgt0b7q/image/upload/v1679087947/mernEcommerce/a64b345016e96adfb8849af5521c8e0ecfe8f027-555x555_o1sghf.webp" alt="headphones" className="hero-banner-image" />
+          <img src="https://res.cloudinary.com/nolyfe/image/upload/v1679727306/mernEcommerce/a64b345016e96adfb8849af5521c8e0ecfe8f027-555x555_svcl92.webp" alt="headphones" className="hero-banner-image" />
 
           <div>
               <Link to="#">
