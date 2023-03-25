@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link, BrowserRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const Product = ({product: { image, name, slug, price} }) => {
+const ProductCards = ({product: { image, name, slug, price} }) => {
   return (
-    <BrowserRouter>
+    
 
     <div>
-      <Link to={`/product/${slug.current}`}>
+      <Link to={`/product/${slug}`}>
           <div className="product-card">
             <img src={image && image[0]?.url}
             width={250}
@@ -20,8 +20,8 @@ const Product = ({product: { image, name, slug, price} }) => {
       </Link>
     </div>
 
-    </BrowserRouter>
+    
   )
 }
 
-export default Product
+export default ProductCards
