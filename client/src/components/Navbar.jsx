@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link, BrowserRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AiOutlineShopping } from 'react-icons/ai';
 
 const Navbar = () => {
   return (
-    <BrowserRouter>
+    
     <div className="navbar-container">
       <p className="logo">
         <Link to="/">JSM Headphones</Link>
@@ -15,7 +15,7 @@ const Navbar = () => {
         <span className="cart-item-qty">1</span>
       </button>
     </div>
-    </BrowserRouter>
+    
   )
 }
 

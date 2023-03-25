@@ -1,9 +1,9 @@
 import React from 'react'
-import { Link, BrowserRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const HeroBanner = () => {
   return (
-    <BrowserRouter>
+    
       <div className="hero-banner-container">
         <div>
           <p className="beats-solo">SMALL TEXT</p>
@@ -22,7 +22,7 @@ const HeroBanner = () => {
 
         </div>
       </div>
-    </BrowserRouter>
+    
   )
 }
 

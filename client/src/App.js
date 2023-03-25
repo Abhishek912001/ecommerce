@@ -1,9 +1,11 @@
 import React from "react";
-import { Product, FooterBanner, HeroBanner } from './components'
+import { ProductCards, FooterBanner, HeroBanner } from './components'
 import { fetchProducts } from './api'
+import { Routes, Route } from "react-router-dom";
+import ProductDetails from './pages/productDetails'
 
 const Home = ({ products }) => {
-    return (
+    return (  
         <>
             <HeroBanner />
 
@@ -13,13 +15,13 @@ const Home = ({ products }) => {
             </div>
 
             <div className="products-container">
-      {/* {passing products containing data to product} */}
+      {/* {passing products containing data to product prop in ProductCards} */}
                 {products?.map((product) => 
-                <Product key={product._id} product={product} />)}
+                <ProductCards key={product._id} product={product} />)}
             </div>
 
-            <FooterBanner />
-        </>
+            <FooterBanner />     
+        </>   
     );
 }
 
@@ -30,14 +32,25 @@ const HomePage = () => {
 
   React.useEffect(() => {
     const fetchProductsData = async () => {
-      const { data } = await fetchProducts();
-      setProducts(data);
+      try {
+        const { data } = await fetchProducts();
+        setProducts(data);
+      } catch (error) {
+        console.error(error);
+      }
     };
 
     fetchProductsData();
   }, []);
 
-  return <Home products={products} />;
+  return (
+  
+  <Routes>
+    <Route path="/" element={<Home products={products} />} />
+    <Route path="/product/:slug" element={<ProductDetails products={products} />} /> {/*selectedProduct={products.find(p => p.slug === slug) this approach can also be used here in this we wont need to use usepram hook */}
+  </Routes>
+        
+  );
 };
 
 export default HomePage;

@@ -1,9 +1,9 @@
 import React from 'react'
-import { Link, BrowserRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const FooterBanner = () => {
   return (
-    <BrowserRouter>
+   
     <div className="footer-banner-container">
       <div className="banner-desc">
         <div className="left">
@@ -28,7 +28,7 @@ const FooterBanner = () => {
         />
       </div>
     </div>
-    </BrowserRouter>
+   
   )
 }
 
