@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { AiFillGithub, AiFillLike } from 'react-icons/ai';
 
 const Footer = () => {
