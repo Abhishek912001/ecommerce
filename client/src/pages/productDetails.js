@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { ProductCards } from '../components';
+import { useStateContext } from '../context/StateContext';
 
 const ProductDetails = ({ products }) => {
   const { slug } = useParams();
   const product = products.find(product => product.slug === slug);
 
   const [index, setIndex] = useState(0);
+  const { decQty, incQty, qty, onAdd } = useStateContext();
 
   if (!product && products.length === 0) {
     return <div>Loading...</div>; // or display a different message to indicate that the data is being fetched
@@ -56,13 +58,13 @@ const ProductDetails = ({ products }) => {
           <div className="quantity">
             <h3>Quantity:</h3>
             <p className="quantity-desc">
-            <span className="minus" onClick=""><AiOutlineMinus /></span>
-            <span className="num" onClick="">0</span>
-            <span className="plus" onClick=""><AiOutlinePlus /></span>
+            <span className="minus" onClick={decQty}><AiOutlineMinus /></span>
+            <span className="num">{qty}</span>
+            <span className="plus" onClick={incQty}><AiOutlinePlus /></span>
             </p>
           </div>
           <div className="buttons">
-            <button type="button" className="add-to-cart" onClick="">Add to Cart</button>
+            <button type="button" className="add-to-cart" onClick={() => onAdd(product, qty)}>Add to Cart</button>
             <button type="button" className="buy-now" onClick="">Buy Now</button>
           </div>
         </div>
