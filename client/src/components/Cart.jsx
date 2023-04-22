@@ -2,13 +2,31 @@ import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineLeft, AiOutlineShopping } from 'react-icons/ai';
 import { TiDeleteOutline } from 'react-icons/ti';
-import { Toast } from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
+import { getStripe, createPayments } from '../api/stripe';
 
 import { useStateContext } from '../context/StateContext';
 
 const Cart = () => {
   const cartRef = useRef();
   const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity, onRemove } = useStateContext();
+
+  const handleCheckout = async () => {
+    const stripe = await getStripe();
+
+    try {
+      const { id } = await createPayments(cartItems);
+      
+      toast.loading('Redirecting...');
+
+      stripe.redirectToCheckout({ sessionId: id });
+      
+    } catch (error) {
+      console.error(error);
+      toast.error('An error occurred while processing your payment.');
+    }
+  }
+
   
   return (
     <div className="cart-wrapper" ref={cartRef}>
@@ -42,7 +60,7 @@ const Cart = () => {
         <div className="product-container">
           {cartItems.length >= 1 && cartItems.map((item) => (
             <div className="product" key={item._id}>
-              <img src={item?.image[0].url} className="cart-product-image" />
+              <img src={item?.image[0].url} className="cart-product-image" alt="cart-product" />
               <div className="item-desc">
                 <div className="flex top">
                   <h5>{item.name}</h5>
@@ -52,7 +70,7 @@ const Cart = () => {
                   <div>
                     <p className="quantity-desc">
                       <span className="minus" onClick={() => toggleCartItemQuantity(item._id, 'dec')}><AiOutlineMinus /></span>
-                      <span className="num" onClick="">{item.quantity}</span>
+                      <span className="num">{item.quantity}</span>
                       <span className="plus" onClick={() => toggleCartItemQuantity(item._id, 'inc')}><AiOutlinePlus /></span>
                     </p>
                   </div>
@@ -75,7 +93,7 @@ const Cart = () => {
               <h3>${totalPrice}</h3>
             </div>
             <div className="btn-container">
-              <button type="button" className="btn" onclick="">
+              <button type="button" className="btn" onClick={handleCheckout}>
                 Pay with Stripe
               </button>
             </div>

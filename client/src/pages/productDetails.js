@@ -9,7 +9,7 @@ const ProductDetails = ({ products }) => {
   const product = products.find(product => product.slug === slug);
 
   const [index, setIndex] = useState(0);
-  const { decQty, incQty, qty, onAdd } = useStateContext();
+  const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
 
   if (!product && products.length === 0) {
     return <div>Loading...</div>; // or display a different message to indicate that the data is being fetched
@@ -18,6 +18,12 @@ const ProductDetails = ({ products }) => {
   if (!product) {
     return <div>Product not found</div>;
   };
+
+  const handleBuyNow = () => {
+    onAdd(product, qty);
+
+    setShowCart(true);
+  }
 
   return (
     <div>
@@ -29,6 +35,7 @@ const ProductDetails = ({ products }) => {
           <div className="small-images-container">
             {product.image?.map((item, i) => (
               <img 
+                key={i}
                 src={item.url}
                 className={i === index ? 'small-image selected-image' : 'small-image'}
                 onMouseEnter={() => setIndex(i)}
@@ -65,7 +72,7 @@ const ProductDetails = ({ products }) => {
           </div>
           <div className="buttons">
             <button type="button" className="add-to-cart" onClick={() => onAdd(product, qty)}>Add to Cart</button>
-            <button type="button" className="buy-now" onClick="">Buy Now</button>
+            <button type="button" className="buy-now" onClick={handleBuyNow}>Buy Now</button>
           </div>
         </div>
       </div>
