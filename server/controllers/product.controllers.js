@@ -1,15 +1,15 @@
 import ProductModel from "../mongodb/models/products.js";
 
-import * as dotenv from 'dotenv';
-import { v2 as cloudinary } from 'cloudinary';
+// import * as dotenv from 'dotenv';
+// import { v2 as cloudinary } from 'cloudinary';
 
-dotenv.config();
+// dotenv.config();
 
-cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET,
-});
+// cloudinary.config({
+//     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+//     api_key: process.env.CLOUDINARY_API_KEY,
+//     api_secret: process.env.CLOUDINARY_API_SECRET,
+// });
 
 
 export const getAllProducts = async (req, res) => {
@@ -22,16 +22,16 @@ export const getAllProducts = async (req, res) => {
     }
 }
 
-export const createProduct = async (req, res) => {
-    const product = req.body;
+// export const createProduct = async (req, res) => {
+//     const product = req.body;
 
-    const newProduct = new ProductModel(product);
+//     const newProduct = new ProductModel(product);
 
-    try {
-        await newProduct.save();
+//     try {
+//         await newProduct.save();
 
-        res.status(201).json(newProduct);
-    } catch (error) {
-        res.status(409).json({ message: error.message });
-    }
-}
+//         res.status(201).json(newProduct);
+//     } catch (error) {
+//         res.status(409).json({ message: error.message });
+//     }
+// }
