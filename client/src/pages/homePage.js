@@ -1,8 +1,9 @@
 import React from "react";
-import { ProductCards, FooterBanner, HeroBanner } from './components'
-import { fetchProducts } from './api'
+import { ProductCards, FooterBanner, HeroBanner } from '../components'
+import { fetchProducts } from '../api/products'
 import { Routes, Route } from "react-router-dom";
-import ProductDetails from './pages/productDetails'
+import ProductDetails from './productDetails'
+import Success from "./success";
 
 const Home = ({ products }) => {
     return (  
@@ -48,6 +49,8 @@ const HomePage = () => {
   <Routes>
     <Route path="/" element={<Home products={products} />} />
     <Route path="/product/:slug" element={<ProductDetails products={products} />} /> {/*selectedProduct={products.find(p => p.slug === slug) this approach can also be used here in this we wont need to use usepram hook */}
+    <Route path="/success" element={<Success />} />
+    <Route path="*" element={<div className='logo'>Sorry, the page you requested could not be found.</div>} />
   </Routes>
         
   );
