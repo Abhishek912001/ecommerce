@@ -1,7 +1,7 @@
 import axios from "axios";
 import { loadStripe } from "@stripe/stripe-js";
 
-const url = "http://localhost:5000/api/v1";
+const url = process.env.REACT_APP_API_URL;
 
 const createPayments = async (cartItems) => {
     try {
