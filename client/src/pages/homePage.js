@@ -1,14 +1,15 @@
 import React from "react";
 import { ProductCards, FooterBanner, HeroBanner } from '../components'
-import { fetchProducts } from '../api/products'
-import { Routes, Route } from "react-router-dom";
+import { fetchProducts } from '../api/products';
+import { fetchBannerData } from '../api/banners';
+import { Routes, Route, useLocation  } from "react-router-dom";
 import ProductDetails from './productDetails'
 import Success from "./success";
 
-const Home = ({ products }) => {
+const Home = ({ products, bannerData }) => {
     return (  
         <>
-            <HeroBanner />
+            <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
 
             <div className="products-heading">
                 <h2>Best Selling Products</h2>
@@ -21,7 +22,7 @@ const Home = ({ products }) => {
                 <ProductCards key={product._id} product={product} />)}
             </div>
 
-            <FooterBanner />     
+            <FooterBanner footerBanner={bannerData.length && bannerData[0]} />   
         </>   
     );
 }
@@ -30,24 +31,33 @@ const Home = ({ products }) => {
 
 const HomePage = () => {
   const [products, setProducts] = React.useState([]);
+  const [bannerData, setBannerData] = React.useState([]);
+  const location = useLocation();
 
   React.useEffect(() => {
-    const fetchProductsData = async () => {
+    const fetchData = async () => {
       try {
-        const { data } = await fetchProducts();
-        setProducts(data);
+        const { data: productsData } = await fetchProducts();
+        const { data: bannerData } = await fetchBannerData();
+       
+        setProducts(productsData);
+        setBannerData(bannerData);
       } catch (error) {
         console.error(error);
       }
     };
 
-    fetchProductsData();
+    fetchData();
   }, []);
+
+  React.useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location.pathname]);
 
   return (
   
   <Routes>
-    <Route path="/" element={<Home products={products} />} />
+    <Route path="/" element={<Home products={products} bannerData={bannerData} />} />
     <Route path="/product/:slug" element={<ProductDetails products={products} />} /> {/*selectedProduct={products.find(p => p.slug === slug) this approach can also be used here in this we wont need to use usepram hook */}
     <Route path="/success" element={<Success />} />
     <Route path="*" element={<div className='logo'>Sorry, the page you requested could not be found.</div>} />

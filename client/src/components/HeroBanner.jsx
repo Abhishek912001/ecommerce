@@ -1,28 +1,27 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-const HeroBanner = () => {
+const HeroBanner = ({ heroBanner: { slug, largeText1, smallText, midText, description, buttonText, image } }) => {
+  
   return (
-    
-      <div className="hero-banner-container">
+    <div className="hero-banner-container">
+      <div>
+        <p className="beats-solo">{smallText}</p>
+        <h3>{midText}</h3>
+        <h1>{largeText1}</h1>
+        <img src={image && image.length > 0 ? image[0].url : ""} alt="hero banner" className="hero-banner-image" />
+
         <div>
-          <p className="beats-solo">SMALL TEXT</p>
-          <h3>MID TEXT</h3>
-          <img src="https://res.cloudinary.com/nolyfe/image/upload/v1679727306/mernEcommerce/a64b345016e96adfb8849af5521c8e0ecfe8f027-555x555_svcl92.webp" alt="headphones" className="hero-banner-image" />
-
-          <div>
-              <Link to="#">
-                <button type="button">BUTTON TEXT</button>
-              </Link>
-              <div className="desc">
-                <h5>Description</h5>
-                <p>DESCRIPTION</p>
-              </div>
+          <Link to={`/product/${slug}`}>
+            <button type="button">{buttonText}</button>
+          </Link>
+          <div className="desc">
+            <h5>Description</h5>
+            <p>{description}</p>
           </div>
-
         </div>
       </div>
-    
+    </div>
   )
 }
 
