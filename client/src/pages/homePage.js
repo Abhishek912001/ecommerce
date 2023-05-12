@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useState } from 'react';
 import { ProductCards, FooterBanner, HeroBanner } from '../components'
 import { fetchProducts } from '../api/products';
 import { fetchBannerData } from '../api/banners';
 import { Routes, Route, useLocation  } from "react-router-dom";
 import ProductDetails from './productDetails'
 import Success from "./success";
+import { ScaleLoader } from 'react-spinners';
 
 const Home = ({ products, bannerData }) => {
+  const [isLoading, setIsLoading] = useState(true);
+  
+  const handleImageLoad = () => {
+    setIsLoading(false);
+  };
+
+
     return (  
         <>
             <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
@@ -16,10 +24,11 @@ const Home = ({ products, bannerData }) => {
                 <p>list of best selling products</p>
             </div>
 
-            <div className="products-container">
+            <div className="products-container" >
+            {isLoading && <div className="spinner"><ScaleLoader color="#f02d34" /></div>}
       {/* {passing products containing data to product prop in ProductCards} */}
                 {products?.map((product) => 
-                <ProductCards key={product._id} product={product} />)}
+                <ProductCards key={product._id} product={product} onLoad={handleImageLoad}  />)}
             </div>
 
             <FooterBanner footerBanner={bannerData.length && bannerData[0]} />   

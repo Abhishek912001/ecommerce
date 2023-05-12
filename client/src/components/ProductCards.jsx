@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ProductCards = ({product: { image, name, slug, price} }) => {
+const ProductCards = ({product: { image, name, slug, price}, onLoad }) => {
   return (
     
 
@@ -13,6 +13,7 @@ const ProductCards = ({product: { image, name, slug, price} }) => {
             height={250}
             className="product-image"
             alt='productImage'
+            onLoad={onLoad} // call the onLoad prop when the image has loaded
             />
             <p className="product-name">{name}</p>
             <p className="product-price">${price}</p>

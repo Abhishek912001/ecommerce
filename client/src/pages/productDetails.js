@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { ProductCards } from '../components';
 import { useStateContext } from '../context/StateContext';
+import { ScaleLoader } from 'react-spinners';
 
 const ProductDetails = ({ products }) => {
   const { slug } = useParams();
@@ -12,7 +13,7 @@ const ProductDetails = ({ products }) => {
   const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
 
   if (!product && products.length === 0) {
-    return <div>Loading...</div>; // or display a different message to indicate that the data is being fetched
+    return <div className="spinner"><ScaleLoader color="#f02d34" />Loading...</div>; // or display a different message to indicate that the data is being fetched
   };
 
   if (!product) {
