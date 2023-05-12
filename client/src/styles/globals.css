@@ -654,9 +654,6 @@ margin-top: 160px;
   .banner-desc .left p{
     margin:10px;
   }
-  .banner-desc .left p:last-of-type {
-    
-  }
   .banner-desc .right h3{
     font-size: 45px;
   }
@@ -696,7 +693,7 @@ margin-top: 160px;
     height: 350px;
   }
   .cart-container{
-    width: 415px;
+    width: 100%;
   padding: 4px;
   }
   .cart-heading{
