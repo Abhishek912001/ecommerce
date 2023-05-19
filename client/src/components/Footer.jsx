@@ -6,7 +6,7 @@ const Footer = () => {
     <div className="footer-container">
       <p>Fully dynamic ecommerce website project built using mern stack.</p>
       <p className="icons">
-      <a href="https://github.com/abhi-nolyfe/ecommerce-site" target="_blank" rel="noopener noreferrer">
+      <a href="https://github.com/abhi-nolyfe/ecommerce-site" title="github" target="_blank" rel="noopener noreferrer">
           <AiFillGithub />
         </a>
         <AiFillLike />
