@@ -13,19 +13,27 @@ const Cart = () => {
 
   const handleCheckout = async () => {
     const stripe = await getStripe();
-
+  
     try {
       const { id } = await createPayments(cartItems);
       
       toast.loading('Redirecting...');
-
-      stripe.redirectToCheckout({ sessionId: id });
+  
+      const { error } = await stripe.redirectToCheckout({ sessionId: id });
+  
+      if (error) {
+        console.error(error);
+        toast.error('An error occurred while processing your payment.');
+      } else {
+        // Stop the loading toast message when the checkout page loads
+        toast.dismiss();
+      }
       
     } catch (error) {
       console.error(error);
       toast.error('An error occurred while processing your payment.');
     }
-  }
+  };
 
   
   return (
