@@ -17,7 +17,7 @@ const Cart = () => {
     try {
       const { id } = await createPayments(cartItems);
       
-      toast.loading('Redirecting...');
+      toast.loading('Redirecting...', {autoclose: 2000});
   
       const { error } = await stripe.redirectToCheckout({ sessionId: id });
   
