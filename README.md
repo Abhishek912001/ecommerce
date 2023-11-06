@@ -1,5 +1,7 @@
 # E-Commerce Project
 
+![Product Page](https://user-images.githubusercontent.com/117166487/280651647-a8598f32-f639-4a92-bf75-5b1c0f3f3d8a.png)
+
 ## Overview
 
 This project is an E-Commerce site designed for small businesses to showcase and sell their products. It's built with the MERN (MongoDB, Express, React, Node.js) stack and features Stripe as the payment gateway.
