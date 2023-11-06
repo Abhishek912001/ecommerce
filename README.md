@@ -18,8 +18,6 @@ The project is organized into two main folders: `client` and `server`.
 
 - **Shopping Cart**: Users can add products to the shopping cart and review selections.
 
-- **Payment**: Stripe is integrated for secure payment processing.
-
 ### Server
 
 - **Backend**: Developed with Node.js and Express for scalability.
