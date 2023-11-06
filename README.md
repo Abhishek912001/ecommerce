@@ -12,23 +12,17 @@ The project is organized into two main folders: `client` and `server`.
 
 ### Client
 
-- **Frontend**: Built with React for a responsive user interface.
-
-- **Data Fetching**: Axios is used to fetch data from the server.
-
-- **Product Display**: Products are showcased with images and descriptions.
-
-- **Shopping Cart**: Users can add products to the shopping cart and review selections.
+- **Frontend**: Built using React for a responsive user interface.
+- **Data Fetching**: Axios is employed for server data retrieval.
+- **Product Display**: Utilizes React components to showcase products with images and descriptions.
+- **Shopping Cart**: Features client-side cart management, allowing users to add, view, and modify product selections.
 
 ### Server
 
-- **Backend**: Developed with Node.js and Express for scalability.
-
-- **Database**: MongoDB serves as the database, offering robust data storage for product information.
-
-- **APIs**: RESTful APIs for product management, order processing.
-
-- **Payment Integration**: Stripe is used for secure payment transactions.
+- **Backend**: Developed with Node.js and Express for high scalability and performance.
+- **Database**: MongoDB serves as the backend database, providing robust and efficient data storage for product information.
+- **APIs**: RESTful APIs facilitate product management and order processing.
+- **Payment Integration**: Stripe integration ensures secure and seamless payment transactions for customers.
 
 ## Setup
 
